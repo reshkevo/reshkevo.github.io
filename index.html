@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reshkevo FX — Trade With Risk Management First</title>
+<meta name="description" content="Reshkevo FX is a forex trading academy and community built around one rule: risk management first, profits second. Join our free community, learn the framework, and size every trade with confidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- ============ NAV ============ -->
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <span class="brand-mark">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+          <path d="M3 18 L8 11 L12 14 L21 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 4 H21 V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+      <span class="brand-text">RESHKEVO <em>FX</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="learn/index.html">Learn</a>
+      <a href="#philosophy">Philosophy</a>
+      <a href="#academy">Academy</a>
+      <a href="#calculator">Risk Calculator</a>
+      <a href="#community">Community</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="https://chat.whatsapp.com/JxE2vjB5hwqFQTV63z1jVW?s=cl&p=a&ilr=4&amv=3" target="_blank" rel="noopener" class="btn btn-primary nav-cta">Join WhatsApp</a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top">
+  <canvas id="candleCanvas" class="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-inner">
+    <p class="eyebrow"><span class="dot"></span> Mr Risk FX Forex Academy</p>
+    <h1 class="hero-title">
+      Risk management first.<br>
+      <span class="hero-title-accent">Profits are what follows.</span>
+    </h1>
+    <p class="hero-sub">
+      Reshkevo FX is a trading academy and community for people who are done gambling their accounts away.
+      We teach position sizing, discipline and a repeatable framework &mdash; not shortcuts.
+    </p>
+    <div class="hero-actions">
+      <a href="https://chat.whatsapp.com/JxE2vjB5hwqFQTV63z1jVW?s=cl&p=a&ilr=4&amv=3" target="_blank" rel="noopener" class="btn btn-primary">
+        Join the WhatsApp community
+      </a>
+      <a href="https://t.me/+BFmujAdiPr4yYTE8" target="_blank" rel="noopener" class="btn btn-ghost">
+        Join on Telegram
+      </a>
+    </div>
+    <p class="hero-note">Free to join &middot; No signal ever replaces your own risk management</p>
+  </div>
+  <div class="scroll-cue" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee-wrap" aria-hidden="true">
+  <div class="marquee" id="marquee"></div>
+</div>
+
+<!-- ============ PHILOSOPHY ============ -->
+<section class="section" id="philosophy">
+  <div class="section-inner">
+    <p class="section-eyebrow">01 &mdash; The rule we don't break</p>
+    <h2 class="section-title">Every account we've seen blow up died the same way &mdash; not from a bad trade, from an unmanaged one.</h2>
+
+    <div class="pillars">
+      <article class="pillar">
+        <span class="pillar-index">Rule 01</span>
+        <h3>Position size before entry</h3>
+        <p>You decide how much you can lose before you decide how much you want to make. Size is set from your stop, never the other way round.</p>
+      </article>
+      <article class="pillar">
+        <span class="pillar-index">Rule 02</span>
+        <h3>The stop-loss is not optional</h3>
+        <p>Every position ships with an exit already placed. If a setup doesn't have a clean invalidation point, it isn't a setup &mdash; it's a hope.</p>
+      </article>
+      <article class="pillar">
+        <span class="pillar-index">Rule 03</span>
+        <h3>One bad week can't end you</h3>
+        <p>We cap risk per trade and per week so that a losing streak is an inconvenience, not an extinction event for your account.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ACADEMY ============ -->
+<section class="section section-alt" id="academy">
+  <div class="section-inner">
+    <p class="section-eyebrow">02 &mdash; What you get</p>
+    <h2 class="section-title">The academy, in plain terms.</h2>
+
+    <div class="offer-grid">
+      <div class="offer-card">
+        <div class="offer-num">01</div>
+        <h3>Live community</h3>
+        <p>A WhatsApp and Telegram group where trades, ideas and risk decisions are discussed in the open &mdash; not sold as secrets.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-num">02</div>
+        <h3>Risk-first framework</h3>
+        <p>A simple, repeatable way to size every position based on your own account and your own stop &mdash; the same tool traders on our team use.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-num">03</div>
+        <h3>Teaching, not signals-only</h3>
+        <p>Sessions and breakdowns on the "why" behind a trade, so you can eventually size and manage your own risk without leaning on anyone.</p>
+      </div>
+      <div class="offer-card">
+        <div class="offer-num">04</div>
+        <h3>YouTube breakdowns</h3>
+        <p>Recorded walk-throughs of markets and trade management on our channel, for anyone who learns best by watching it done.</p>
+      </div>
+    </div>
+
+    <p class="disclaimer-inline">Forex trading carries a high level of risk and can result in the loss of your invested capital. Nothing here is financial advice &mdash; trade only with money you can afford to lose, and always manage your risk.</p>
+
+    <a href="learn/index.html" class="btn btn-ghost" style="margin-top:2rem;">Start the free lesson series &rarr;</a>
+  </div>
+</section>
+
+<!-- ============ RISK CALCULATOR ============ -->
+<section class="section" id="calculator">
+  <div class="section-inner">
+    <p class="section-eyebrow">03 &mdash; Rule 01, made practical</p>
+    <h2 class="section-title">Work out your position size before you place the trade.</h2>
+    <p class="section-lead">This is the one tool every member is told to use before every entry. Fill in your account and your stop &mdash; it tells you the size, not the direction.</p>
+
+    <div class="calc-card">
+      <div class="calc-form">
+        <label class="field">
+          <span>Account balance</span>
+          <div class="input-row">
+            <span class="input-prefix">$</span>
+            <input type="number" id="balance" placeholder="1000" min="0" step="1">
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Risk per trade</span>
+          <div class="input-row">
+            <input type="number" id="riskPct" placeholder="1" min="0.1" max="100" step="0.1">
+            <span class="input-suffix">%</span>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Stop-loss distance</span>
+          <div class="input-row">
+            <input type="number" id="stopPips" placeholder="20" min="1" step="1">
+            <span class="input-suffix">pips</span>
+          </div>
+        </label>
+
+        <label class="field">
+          <span>Pair type</span>
+          <select id="pairType">
+            <option value="10">Standard pair &mdash; e.g. EUR/USD, GBP/USD ($10/pip per standard lot)</option>
+            <option value="9.1">JPY pair &mdash; e.g. USD/JPY, GBP/JPY (approx.)</option>
+          </select>
+        </label>
+
+        <button class="btn btn-primary calc-btn" id="calcBtn" type="button">Calculate position size</button>
+      </div>
+
+      <div class="calc-result" id="calcResult">
+        <div class="result-row">
+          <span>Amount at risk</span>
+          <strong id="resDollar">&mdash;</strong>
+        </div>
+        <div class="result-row">
+          <span>Position size</span>
+          <strong id="resLots">&mdash;</strong>
+        </div>
+        <div class="result-row">
+          <span>Units (micro/standard)</span>
+          <strong id="resUnits">&mdash;</strong>
+        </div>
+        <p class="result-note">Pip values are approximate and vary by broker and pair &mdash; always confirm against your broker's exact pip value before sizing a live trade.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMMUNITY ============ -->
+<section class="section section-alt" id="community">
+  <div class="section-inner">
+    <p class="section-eyebrow">04 &mdash; Where we are</p>
+    <h2 class="section-title">Every channel we actually run.</h2>
+
+    <div class="link-grid">
+      <a class="link-card" href="https://chat.whatsapp.com/JxE2vjB5hwqFQTV63z1jVW?s=cl&p=a&ilr=4&amv=3" target="_blank" rel="noopener">
+        <span class="link-icon" data-icon="whatsapp"></span>
+        <span class="link-label">WhatsApp community</span>
+        <span class="link-arrow">&rarr;</span>
+      </a>
+      <a class="link-card" href="https://t.me/+BFmujAdiPr4yYTE8" target="_blank" rel="noopener">
+        <span class="link-icon" data-icon="telegram"></span>
+        <span class="link-label">Telegram group</span>
+        <span class="link-arrow">&rarr;</span>
+      </a>
+      <a class="link-card" href="https://www.fb.com/l/6lp1kJRRR" target="_blank" rel="noopener">
+        <span class="link-icon" data-icon="facebook"></span>
+        <span class="link-label">Facebook page</span>
+        <span class="link-arrow">&rarr;</span>
+      </a>
+      <a class="link-card" href="https://youtube.com/@reshkevofx?si=85wOQVzUOPowBCSk" target="_blank" rel="noopener">
+        <span class="link-icon" data-icon="youtube"></span>
+        <span class="link-label">YouTube channel</span>
+        <span class="link-arrow">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <p class="section-eyebrow">05 &mdash; Talk to us</p>
+    <h2 class="section-title">Questions before you join? Reach out directly.</h2>
+
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:moretikelvin@gmail.com">
+        <span class="contact-label">Email</span>
+        <span class="contact-value">moretikelvin@gmail.com</span>
+      </a>
+      <a class="contact-item" href="tel:+254712666250">
+        <span class="contact-label">Phone / WhatsApp</span>
+        <span class="contact-value">0712 666 250</span>
+      </a>
+      <a class="contact-item" href="tel:+254700363628">
+        <span class="contact-label">Phone / WhatsApp</span>
+        <span class="contact-value">0700 363 628</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-text">RESHKEVO <em>FX</em></span>
+      <p>Mr Risk FX Forex Academy &mdash; risk management first.</p>
+    </div>
+    <div class="footer-links">
+      <a href="#philosophy">Philosophy</a>
+      <a href="#academy">Academy</a>
+      <a href="#calculator">Risk Calculator</a>
+      <a href="#community">Community</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <p class="risk-warning">
+    Risk warning: trading forex and CFDs is speculative and carries a high level of risk to your capital.
+    Past performance is not indicative of future results. Nothing on this site constitutes financial advice.
+    Only trade with capital you can afford to lose, and seek independent advice if you are unsure.
+  </p>
+  <p class="copyright">&copy; <span id="year"></span> Reshkevo FX. All rights reserved.</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
