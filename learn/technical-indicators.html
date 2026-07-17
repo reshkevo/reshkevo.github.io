@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technical Indicators — Lesson 06 | Reshkevo FX</title>
+<meta name="description" content="A practical introduction to moving averages, RSI, MACD and Bollinger Bands — what each one measures, and why fewer indicators used well beats a chart full of them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<div class="grain"></div>
+
+<header class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../index.html#top" class="brand">
+      <span class="brand-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M3 18 L8 11 L12 14 L21 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 4 H21 V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="brand-text">RESHKEVO <em>FX</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html">Learn</a>
+      <a href="../markets.html">Markets</a>
+      <a href="../index.html#philosophy">Philosophy</a>
+      <a href="../index.html#academy">Academy</a>
+      <a href="../index.html#calculator">Risk Calculator</a>
+      <a href="../index.html#community">Community</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <a href="https://chat.whatsapp.com/JxE2vjB5hwqFQTV63z1jVW?s=cl&p=a&ilr=4&amv=3" target="_blank" rel="noopener" class="btn btn-primary nav-cta">Join WhatsApp</a>
+    <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="breadcrumbs"><a href="../index.html#top">Home</a><span>/</span><a href="index.html">Learn</a><span>/</span>Lesson 06</div>
+
+<section class="lesson-hero">
+  <p class="lesson-kicker">Lesson 06 of 8</p>
+  <h1 class="lesson-title">Technical indicators</h1>
+  <p class="lesson-dek">Indicators don't predict the future &mdash; they summarize the past in a way that's easier to read at a glance. Here's what the four most-used ones actually measure.</p>
+  <div class="lesson-meta"><span>&#9200; 8 min read</span><span>&#128218; Analysis</span></div>
+</section>
+
+<!-- ============ AD SLOT ============ -->
+<div class="ad-slot-wrap">
+  <span class="ad-slot-label">Advertisement</span>
+  <div class="ad-slot">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '303edb135cd696041becb657fba28104',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="https://www.highperformanceformat.com/303edb135cd696041becb657fba28104/invoke.js"></script>
+  </div>
+</div>
+
+<div class="lesson-layout">
+  <article class="prose">
+
+    <h2 id="what-indicators-are">What an indicator actually is</h2>
+    <p>Every indicator is just a formula run on price (and sometimes volume), replotted so a pattern that's hard to see in raw candles becomes easier to see. That's the whole trick &mdash; nothing on the chart is magic, it's arithmetic on numbers you already have.</p>
+    <div class="callout">
+      <span class="callout-label">The habit worth building early</span>
+      <p>Learn what an indicator is calculating before you learn what signal it supposedly gives. If you understand the math, you'll know when the signal is reliable and when it's just noise for that particular market condition &mdash; if you only memorize "line crosses line, buy," you'll get chopped up in the conditions where that rule doesn't apply.</p>
+    </div>
+
+    <h2 id="moving-averages">Moving averages: the trend, smoothed</h2>
+    <p>A <strong>moving average (MA)</strong> plots the average price over the last N periods, updating as each new candle closes. It smooths out the noise of individual candles so the underlying direction is easier to see.</p>
+    <ul>
+      <li><strong>Simple moving average (SMA)</strong> &mdash; equal weight to every period in the window.</li>
+      <li><strong>Exponential moving average (EMA)</strong> &mdash; more weight on recent price, so it reacts faster to new moves.</li>
+    </ul>
+    <p>Common uses: price above a rising MA is often read as an uptrend context, price below a falling MA as a downtrend context; two MAs of different lengths crossing (a "golden cross" or "death cross") is a popular but lagging trend-change signal &mdash; by the time the cross happens, a real chunk of the move has usually already occurred.</p>
+
+    <h2 id="rsi">RSI: is this move stretched?</h2>
+    <p>The <strong>Relative Strength Index (RSI)</strong> measures the speed and size of recent price changes on a scale from 0 to 100. It's typically read as:</p>
+    <table class="data-table">
+      <thead><tr><th>RSI reading</th><th>Common interpretation</th></tr></thead>
+      <tbody>
+        <tr><td>Above 70</td><td>Potentially overbought &mdash; the recent up-move may be stretched</td></tr>
+        <tr><td>Below 30</td><td>Potentially oversold &mdash; the recent down-move may be stretched</td></tr>
+        <tr><td>Around 50</td><td>No strong directional momentum either way</td></tr>
+      </tbody>
+    </table>
+    <div class="callout callout-warn">
+      <span class="callout-label">The trap this lesson wants you to avoid</span>
+      <p>"Overbought" does not mean "must fall now." In a strong trend, RSI can sit above 70 or below 30 for a long stretch while price keeps running. Treat RSI extremes as a prompt to pay closer attention, not an automatic signal to trade against the trend.</p>
+    </div>
+
+    <h2 id="macd">MACD: momentum shifting gears</h2>
+    <p>The <strong>Moving Average Convergence Divergence (MACD)</strong> compares two EMAs (typically 12 and 26 periods) via a MACD line, a signal line (a 9-period EMA of the MACD line), and a histogram showing the gap between them.</p>
+    <div class="formula-box">MACD line = EMA(12) &minus; EMA(26)<br>Signal line = EMA(9) of the MACD line<br>Histogram = MACD line &minus; Signal line</div>
+    <p>When the MACD line crosses above the signal line, momentum is shifting upward; below, it's shifting downward. The histogram shrinking toward zero, even while price keeps moving in the same direction, is often read as fading momentum &mdash; sometimes called divergence when price makes a new high or low that the indicator doesn't confirm.</p>
+
+    <h2 id="bollinger">Bollinger Bands: how wide is normal right now?</h2>
+    <p><strong>Bollinger Bands</strong> plot a moving average with two bands above and below it, spaced by a multiple of recent price volatility (standard deviation). They widen when volatility rises and narrow when it falls.</p>
+    <ul>
+      <li>Price pressing the upper band isn't automatically a sell &mdash; in a strong trend, price can "walk the band."</li>
+      <li>A sharp narrowing of the bands ("the squeeze") often precedes a bigger move, though it doesn't say which direction.</li>
+    </ul>
+
+    <h2 id="fewer-is-more">Fewer indicators, used well</h2>
+    <p>A chart with six overlapping indicators usually produces conflicting signals more often than it produces clarity. A common, workable approach: one tool for trend context (like an MA), one for momentum or exhaustion (like RSI or MACD), and the price action itself &mdash; support, resistance and candle structure from Lesson 03 &mdash; as the tie-breaker.</p>
+    <div class="callout callout-gold">
+      <span class="callout-label">Where this connects</span>
+      <p>Indicators describe conditions; they don't replace the trend-and-levels read from Lesson 03, and they never replace the position sizing from Lesson 04. An indicator can tell you a setup looks interesting &mdash; it should never be the thing deciding how large the trade is.</p>
+    </div>
+
+    <h2 id="next">What's next</h2>
+    <p>Indicators describe what price has already done. Lesson 07 looks at the other half of the picture: the economic events and data releases that often explain why price did it in the first place.</p>
+
+    <div class="lesson-nav-buttons">
+      <a class="lesson-nav-btn" href="trading-psychology.html"><small>Previous</small><span>&larr; Trading psychology</span></a>
+      <a class="lesson-nav-btn next" href="fundamental-analysis.html"><small>Next lesson</small><span>Fundamental analysis &rarr;</span></a>
+    </div>
+  </article>
+
+  <aside class="lesson-sidebar">
+    <div class="sidebar-sticky">
+      <div class="sidebar-card">
+        <p class="sidebar-title">On this page</p>
+        <ul class="toc-list">
+          <li><a href="#what-indicators-are">What an indicator is</a></li>
+          <li><a href="#moving-averages">Moving averages</a></li>
+          <li><a href="#rsi">RSI</a></li>
+          <li><a href="#macd">MACD</a></li>
+          <li><a href="#bollinger">Bollinger Bands</a></li>
+          <li><a href="#fewer-is-more">Fewer, used well</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <p class="sidebar-title">Course</p>
+        <ul class="toc-list">
+          <li><a href="what-is-forex.html">01 &middot; What is forex?</a></li>
+          <li><a href="pips-lots-leverage.html">02 &middot; Pips, lots &amp; leverage</a></li>
+          <li><a href="reading-charts.html">03 &middot; Reading a chart</a></li>
+          <li><a href="risk-management.html">04 &middot; Risk management</a></li>
+          <li><a href="trading-psychology.html">05 &middot; Trading psychology</a></li>
+          <li><a href="technical-indicators.html"><strong>06 &middot; Technical indicators</strong></a></li>
+          <li><a href="fundamental-analysis.html">07 &middot; Fundamental analysis</a></li>
+          <li><a href="trading-plan.html">08 &middot; Building a trading plan</a></li>
+        </ul>
+      </div>
+      <div class="sidebar-card">
+        <p class="sidebar-title">See it live</p>
+        <p style="font-size:0.85rem; color:var(--mist); margin-bottom:0.9rem;">Pull up the advanced chart and try adding an MA or RSI yourself.</p>
+        <a href="../markets.html" class="btn btn-primary" style="width:100%; font-size:0.85rem; padding:0.7rem;">Open live markets</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- ============ AD SLOT ============ -->
+<div class="ad-slot-wrap">
+  <span class="ad-slot-label">Advertisement</span>
+  <div class="ad-slot">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '303edb135cd696041becb657fba28104',
+        'format' : 'iframe',
+        'height' : 60,
+        'width' : 468,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="https://www.highperformanceformat.com/303edb135cd696041becb657fba28104/invoke.js"></script>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand"><span class="brand-text">RESHKEVO <em>FX</em></span><p>Mr Risk FX Forex Academy &mdash; risk management first.</p></div>
+    <div class="footer-links">
+      <a href="../index.html#philosophy">Philosophy</a>
+      <a href="../index.html#academy">Academy</a>
+      <a href="../index.html#calculator">Risk Calculator</a>
+      <a href="../index.html#community">Community</a>
+      <a href="../index.html#contact">Contact</a>
+    </div>
+  </div>
+  <p class="risk-warning">Risk warning: trading forex and CFDs is speculative and carries a high level of risk to your capital. Past performance is not indicative of future results. Nothing on this site constitutes financial advice. Only trade with capital you can afford to lose, and seek independent advice if you are unsure.</p>
+  <p class="copyright">&copy; <span id="year"></span> Reshkevo FX. All rights reserved.</p>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
