@@ -1,125 +1,81 @@
-// ===================================================================
-// RESHKEVO FX — site scripts
-// ===================================================================
-
-document.getElementById('year').textContent = new Date().getFullYear();
-
-/* ---------- Mobile nav ---------- */
-const burger = document.getElementById('burger');
-const navLinks = document.getElementById('navLinks');
-burger.addEventListener('click', () => {
-  const open = navLinks.classList.toggle('open');
-  burger.setAttribute('aria-expanded', open ? 'true' : 'false');
-});
-navLinks.addEventListener('click', (e) => {
-  if (e.target.tagName === 'A') navLinks.classList.remove('open');
-});
-
-/* ---------- Hero candlestick canvas (decorative, illustrative only) ---------- */
-(function candlesticks(){
-  const canvas = document.getElementById('candleCanvas');
-  const ctx = canvas.getContext('2d');
-  let width, height, candles = [];
-
-  function resize(){
-    width = canvas.width = canvas.offsetWidth * devicePixelRatio;
-    height = canvas.height = canvas.offsetHeight * devicePixelRatio;
-    const count = Math.floor(canvas.offsetWidth / 26);
-    candles = [];
-    let base = height * 0.55;
-    for (let i = 0; i < count; i++){
-      const bodyH = (Math.random() * 0.18 + 0.04) * height;
-      const wickH = bodyH + Math.random() * 0.12 * height;
-      const up = Math.random() > 0.45;
-      base += (Math.random() - 0.5) * height * 0.05;
-      base = Math.max(height * 0.25, Math.min(height * 0.75, base));
-      candles.push({ x: i * 26 * devicePixelRatio, base, bodyH, wickH, up, phase: Math.random() * Math.PI * 2 });
-    }
-  }
-
-  function draw(t){
-    ctx.clearRect(0, 0, width, height);
-    candles.forEach((c) => {
-      const bob = Math.sin(t / 1800 + c.phase) * 4 * devicePixelRatio;
-      const y = c.base + bob;
-      const color = c.up ? '#1FCB8C' : '#FF5C6C';
-      ctx.strokeStyle = color;
-      ctx.fillStyle = color;
-      ctx.globalAlpha = 0.55;
-      // wick
-      ctx.lineWidth = 1.4 * devicePixelRatio;
-      ctx.beginPath();
-      ctx.moveTo(c.x + 10 * devicePixelRatio, y - c.wickH / 2);
-      ctx.lineTo(c.x + 10 * devicePixelRatio, y + c.wickH / 2);
-      ctx.stroke();
-      // body
-      ctx.globalAlpha = 0.85;
-      ctx.fillRect(c.x + 4 * devicePixelRatio, y - c.bodyH / 2, 12 * devicePixelRatio, c.bodyH);
-    });
-    ctx.globalAlpha = 1;
-    requestAnimationFrame(draw);
-  }
-
-  window.addEventListener('resize', resize);
-  resize();
-  requestAnimationFrame(draw);
-})();
-
-/* ---------- Marquee (ambient, illustrative sample view — not live data) ---------- */
-(function marquee(){
-  const pairs = [
-    'EUR/USD', 'GBP/USD', 'USD/JPY', 'USD/CHF', 'AUD/USD',
-    'USD/CAD', 'NZD/USD', 'EUR/GBP', 'GBP/JPY', 'EUR/JPY'
-  ];
-  const el = document.getElementById('marquee');
-  const items = pairs.map((p) => {
-    const up = Math.random() > 0.5;
-    const val = (Math.random() * 1.4 + 0.6).toFixed(4);
-    return `<span class="${up ? 'up' : 'down'}"><b>${p}</b> ${val} ${up ? '&#9650;' : '&#9660;'}</span>`;
+(function(){
+var $=function(s){return document.querySelector(s)},$$=function(s){return document.querySelectorAll(s)};
+// progress + navbar + back-top
+var pb=$('#progress-bar'),nb=$('#navbar'),bt=$('#backTop');
+window.addEventListener('scroll',function(){
+  var h=document.documentElement.scrollHeight-window.innerHeight;
+  if(pb&&h>0)pb.style.width=(window.scrollY/h*100)+'%';
+  if(nb)nb.classList.toggle('scrolled',window.scrollY>60);
+  if(bt)bt.classList.toggle('show',window.scrollY>300);
+},{passive:true});
+if(bt)bt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+// mobile menu
+var ham=$('#hamburger'),mm=$('#mobileMenu');
+function closeMenu(){if(!mm)return;mm.classList.remove('open');ham.classList.remove('open');ham.setAttribute('aria-expanded','false')}
+if(ham&&mm){
+  ham.addEventListener('click',function(){var o=mm.classList.toggle('open');ham.classList.toggle('open',o);ham.setAttribute('aria-expanded',o)});
+  mm.addEventListener('click',function(e){if(e.target.tagName==='A')closeMenu()});
+  document.addEventListener('click',function(e){if(mm.classList.contains('open')&&!mm.contains(e.target)&&!ham.contains(e.target))closeMenu()});
+}
+// reveal
+var rv=$$('.reveal');
+if('IntersectionObserver' in window){
+  var ro=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');ro.unobserve(e.target)}})},{threshold:.06});
+  rv.forEach(function(el){ro.observe(el)});
+}else{rv.forEach(function(el){el.classList.add('visible')})}
+// typewriter
+var tw=$('#tw-text');
+if(tw){
+  var ph=['Risk management first','Free forex lessons','Position sizing made simple','Live market breakdowns','Practice with $10,000 virtual funds'],pi=0,ci=0,del=false;
+  (function type(){
+    var cur=ph[pi];
+    if(!del){tw.textContent=cur.slice(0,++ci);if(ci===cur.length){del=true;return setTimeout(type,1800)}}
+    else{tw.textContent=cur.slice(0,--ci);if(ci===0){del=false;pi=(pi+1)%ph.length}}
+    setTimeout(type,del?45:80);
+  })();
+}
+// counters
+var sb=$('.stats-bar');
+if(sb&&'IntersectionObserver' in window){
+  var so=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){
+    $$('.stat-num').forEach(function(el){var t=parseInt(el.dataset.target,10),c=0,st=Math.max(1,t/30);var id=setInterval(function(){c=Math.min(c+st,t);el.textContent=Math.round(c)+'+';if(c>=t)clearInterval(id)},40)});
+    so.disconnect()}})},{threshold:.5});
+  so.observe(sb);
+}
+// marquee
+var m=$('#marquee');
+if(m){var p=['EUR/USD','GBP/USD','USD/JPY','USD/CHF','AUD/USD','USD/CAD','NZD/USD','XAU/USD','EUR/GBP','GBP/JPY'],h='';for(var i=0;i<2;i++)p.forEach(function(x){h+='<span>'+x+'</span>'});m.innerHTML=h}
+// year
+var y=$('#year');if(y)y.textContent=new Date().getFullYear();
+// calculator
+var btn=$('#calcBtn');
+if(btn){
+  btn.addEventListener('click',function(){
+    var B=parseFloat($('#balance').value),R=parseFloat($('#riskPct').value),S=parseFloat($('#stopPips').value),V=parseFloat($('#pairType').value);
+    if(!(B>0&&R>0&&S>0)){$('#resDollar').textContent='Fill all fields';$('#resLots').textContent='—';$('#resUnits').textContent='—';return}
+    var d=B*R/100,l=d/(S*V),u=Math.round(l*100000);
+    $('#resDollar').textContent='$'+d.toFixed(2);
+    $('#resLots').textContent=l.toFixed(2)+' lots';
+    $('#resUnits').textContent=u.toLocaleString()+' units ('+(l*100).toFixed(1)+' micro)';
   });
-  // duplicate for seamless loop
-  el.innerHTML = items.join('') + items.join('');
-})();
-
-/* ---------- Risk / position size calculator ---------- */
-(function riskCalculator(){
-  const btn = document.getElementById('calcBtn');
-  const balanceInput = document.getElementById('balance');
-  const riskInput = document.getElementById('riskPct');
-  const stopInput = document.getElementById('stopPips');
-  const pairSelect = document.getElementById('pairType');
-
-  const resDollar = document.getElementById('resDollar');
-  const resLots = document.getElementById('resLots');
-  const resUnits = document.getElementById('resUnits');
-
-  function calculate(){
-    const balance = parseFloat(balanceInput.value);
-    const riskPct = parseFloat(riskInput.value);
-    const stopPips = parseFloat(stopInput.value);
-    const pipValuePerStdLot = parseFloat(pairSelect.value); // approx $ per pip per standard lot (100k units)
-
-    if (!balance || !riskPct || !stopPips || balance <= 0 || riskPct <= 0 || stopPips <= 0){
-      resDollar.textContent = '—';
-      resLots.textContent = 'Enter valid numbers above';
-      resUnits.textContent = '—';
-      return;
-    }
-
-    const riskAmount = balance * (riskPct / 100);
-    const pipValuePerPip = pipValuePerStdLot; // per standard lot
-    const lots = riskAmount / (stopPips * pipValuePerPip);
-    const units = lots * 100000;
-
-    resDollar.textContent = '$' + riskAmount.toFixed(2);
-    resLots.textContent = lots.toFixed(2) + ' standard lots';
-    resUnits.textContent = Math.round(units).toLocaleString() + ' units';
+}
+// search page
+var sf=$('#searchInput');
+if(sf&&window.SITE_INDEX){
+  var out=$('#searchResults');
+  function run(q){
+    q=q.trim().toLowerCase();
+    if(!q){out.innerHTML='<p class="sec-lead">Type something like <b>stop-loss</b>, <b>leverage</b> or <b>exness</b>.</p>';return}
+    var terms=q.split(/\s+/),res=window.SITE_INDEX.map(function(it){
+      var hay=(it.t+' '+it.d+' '+it.k).toLowerCase(),sc=0;
+      terms.forEach(function(t){if(it.t.toLowerCase().indexOf(t)>-1)sc+=3;if(hay.indexOf(t)>-1)sc+=1});
+      return {it:it,sc:sc};
+    }).filter(function(r){return r.sc>0}).sort(function(a,b){return b.sc-a.sc});
+    if(!res.length){out.innerHTML='<p class="sec-lead">No results for “'+q.replace(/</g,'&lt;')+'”. Try a simpler word.</p>';return}
+    out.innerHTML='<div class="grid g3">'+res.map(function(r){var i=r.it;return '<a class="card" href="'+i.u+'"><div class="card-body"><div class="card-cat">'+i.c+'</div><h3>'+i.t+'</h3><p>'+i.d+'</p><span class="read-more">Read More</span></div></a>'}).join('')+'</div>';
   }
-
-  btn.addEventListener('click', calculate);
-  [balanceInput, riskInput, stopInput, pairSelect].forEach((el) => {
-    el.addEventListener('keydown', (e) => { if (e.key === 'Enter') calculate(); });
-  });
+  sf.addEventListener('input',function(){run(sf.value)});
+  $('#searchForm').addEventListener('submit',function(e){e.preventDefault();run(sf.value)});
+  var qs=new URLSearchParams(location.search).get('q');if(qs){sf.value=qs;run(qs)}else run('');
+}
 })();
-
-/* ---------- Nav shrink/blur handled purely via CSS backdrop-filter; scroll-spy could be added later ---------- */
